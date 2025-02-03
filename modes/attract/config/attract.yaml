@@ -5,3 +5,8 @@
 
 slide_player:
   mode_attract_started: attract
+
+sound_player:
+  mode_attract_started: 
+    ScottDanesi_Nineteen_Eighty_Something:
+      bus: music
