@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3sn8vjvinfjq"]
+[gd_scene load_steps=5 format=3 uid="uid://b3sn8vjvinfjq"]
 
 [ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_slide.gd" id="1_ih6u8"]
+[ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_carousel.gd" id="2_x3qnr"]
+[ext_resource type="Script" path="res://addons/mpf-gmc/classes/mpf_variable.gd" id="3_rsynx"]
+[ext_resource type="Texture2D" uid="uid://dounln3l35d26" path="res://addons/mpf-gmc/images/logo_mpf.png" id="4_rtf1k"]
 
 [node name="Attract" type="Control"]
 layout_mode = 3
@@ -8,19 +11,97 @@ anchors_preset = 0
 script = ExtResource("1_ih6u8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 1024.0
 color = Color(0, 0.627451, 1, 1)
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="MPFCarousel" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_x3qnr")
+carousel_name = "attract"
+
+[node name="mpf_logo" type="Sprite2D" parent="MPFCarousel"]
+visible = false
+position = Vector2(644, 522)
+texture = ExtResource("4_rtf1k")
+
+[node name="credits" type="Label" parent="MPFCarousel"]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 1281.0
+offset_bottom = 1030.0
+theme_override_font_sizes/font_size = 80
+text = "SAMPLE TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rsynx")
+variable_type = 2
+variable_name = "credits_string"
+
+[node name="title" type="Label" parent="MPFCarousel"]
+visible = false
 layout_mode = 1
-offset_left = 242.955
-offset_top = 217.711
-offset_right = 1042.96
-offset_bottom = 697.711
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 1280.0
+offset_bottom = 1012.0
 rotation = 0.00788726
 theme_override_font_sizes/font_size = 80
 text = "Welcome to G's Pinball"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="last_scores_1p" type="Node2D" parent="MPFCarousel"]
+visible = false
+position = Vector2(6, 1)
+
+[node name="player1_score" type="Label" parent="MPFCarousel/last_scores_1p"]
+visible = false
+offset_right = 1266.0
+offset_bottom = 1018.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rsynx")
+variable_type = 2
+variable_name = "player1_score"
+comma_separate = true
+min_digits = 2
+
+[node name="last_scores_2p" type="Node2D" parent="MPFCarousel"]
+position = Vector2(6, 1)
+
+[node name="player1_score" type="Label" parent="MPFCarousel/last_scores_2p"]
+offset_right = 1266.0
+offset_bottom = 547.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rsynx")
+variable_type = 2
+variable_name = "player1_score"
+comma_separate = true
+min_digits = 2
+
+[node name="player2_score" type="Label" parent="MPFCarousel/last_scores_2p"]
+offset_left = 2.0
+offset_top = 559.0
+offset_right = 1268.0
+offset_bottom = 1032.0
+theme_override_font_sizes/font_size = 80
+text = "123,456"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rsynx")
+variable_type = 2
+variable_name = "player1_score"
+comma_separate = true
+min_digits = 2
